@@ -1,7 +1,9 @@
 import {
   FETCH_CARDS_ERROR,
   FETCH_CARDS_REQUEST,
-  FETCH_CARDS_SUCCESS
+  FETCH_CARDS_SUCCESS,
+  CHECK_CARD_REQUEST,
+  CHECK_CARD_SUCCESS
 } from '../actions/card';
 
 const intialState = {
@@ -27,6 +29,16 @@ export default function reducer(state = intialState, action) {
       loading: false,
       error: action.error
     });
+  } else if (action.type === CHECK_CARD_REQUEST) {
+    return Object.assign({}, state, { loading: true });
+  // } else if (action.type === CHECK_CARD_SUCCESS) {
+  //   const id = action.id
+  //   const {id, ...oldCards} = state.cards;
+  //   const cards = {cards: }
+  //   Object.assign({}, state, {cards: {
+  //     id: action.card,
+  //     oldCards
+  //   } })
   }
   return state;
 }

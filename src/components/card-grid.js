@@ -1,8 +1,7 @@
 import React from 'react';
 import './card-grid.css';
-import { connect } from 'react-redux';
 
-export function CardGrid(props) {
+export default function CardGrid(props) {
   /**
    * Generates the entire grid by calling generate row for 7 rows.
    * Returns an html table.
@@ -51,7 +50,7 @@ export function CardGrid(props) {
             type="checkbox"
             className="active"
             key={row * 7 + i}
-            onChange={e => console.log(e.target)}
+            onChange={() => props.onCheck()}
           />
         );
       } else {
@@ -68,5 +67,3 @@ export function CardGrid(props) {
 
   return generateGrid();
 }
-
-export default connect()(CardGrid);

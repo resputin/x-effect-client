@@ -24,6 +24,7 @@ export class App extends Component {
       <div>
         <h1>The X Effect</h1>
         {cards}
+        Add a new Card
       </div>
     );
   }
