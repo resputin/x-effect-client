@@ -1,16 +1,19 @@
 .card {
   text-align: center;
   border: 1px solid black;
-  width: 75%;
+  border-top: 6px solid rgba(255, 0, 0, 0.459);
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
   border-radius: 5px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+
 }
 
 .title {
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   margin-top: 5px;
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 

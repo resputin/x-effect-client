@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { fetchCards, addCard } from './actions/card';
-import Card from './components/card'
+import Card from './components/card';
 import CardForm from './components/card-form';
-import Navigation from "./components/navigation";
+import Navigation from './components/navigation';
 
 export class App extends Component {
   componentDidMount() {
@@ -14,21 +14,25 @@ export class App extends Component {
   render() {
     const cards = [];
     for (let key in this.props.cards) {
-      cards.push(<Card id={key} key={key} />)
+      cards.push(<Card id={key} key={key} />);
     }
-    
-    
+
     // const cards = this.props.cards.map(card => {
     //   return <Card card={card} key={card.id} />;
     // });
 
     return (
-      <div>
-        <h1>The X Effect</h1>
-        <Navigation />
-        {cards}
-        Add a new Card
-        <CardForm onSubmit={value => this.props.dispatch(addCard(value))}/>
+      <div className="app">
+        <h1 className="header">The X Effect</h1>
+        <Navigation className="nav" role="navigation"/>
+        <div className="main">
+          <div className="newCard" role="form">
+            <CardForm onSubmit={value => this.props.dispatch(addCard(value))} />
+          </div>
+          <div role="main">
+            {cards}
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,28 +1,32 @@
-.App {
+.app {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 80px auto;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 3;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.nav {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.main {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
 }
 
-.App-title {
-  font-size: 1.5em;
+.newCard {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h1 {
+  margin-bottom: 25px;
 }
