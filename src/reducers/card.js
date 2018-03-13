@@ -6,7 +6,8 @@ import {
 
 const intialState = {
   loading: false,
-  error: null
+  error: null,
+  cards: []
 };
 
 export default function reducer(state = intialState, action) {

@@ -9,14 +9,26 @@ export class App extends Component {
   }
 
   render() {
-    // const cards = this.props.cards.map(card => {
-    //   return <li key={card.id}>{card.name}</li>;
-    // });
+    const cards = this.props.cards.map(card => {
+      const cells = card.xArray.map((cell, index) => {
+        return cell ? <li key={index} className="complete">X</li> : <li key={index} className="incomplete">O</li>;
+      })
+      return (
+      <li key={card.id}>
+        {card.name}
+        <ul>
+          <li>
+            {cells}
+          </li>
+        </ul>
+      </li>
+      );
+    });
 
     return (
       <div>
         <h1>The X Effect</h1>
-        {/* <ul>{cards}</ul> */}
+        <ul>{cards}</ul>
       </div>
     );
   }
