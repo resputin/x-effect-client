@@ -1,0 +1,16 @@
+.card {
+  text-align: center;
+  border: 1px solid black;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  border-radius: 5px;
+}
+
+.title {
+  border-bottom: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+

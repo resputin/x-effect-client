@@ -1,0 +1,15 @@
+.grid {
+  width: 100%;
+  height: 200px;
+  border-collapse: collapse;
+}
+
+.grid-square {
+  border: 1px solid black;
+  width: 14.285714286%;
+  height: 14.285714286%
+}
+
+.complete {
+  color: red;
+}
