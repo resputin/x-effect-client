@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fetchCards } from './actions/card';
 import Card from './components/card'
+import CardForm from './components/card-form';
 
 export class App extends Component {
   componentDidMount() {
@@ -25,6 +26,7 @@ export class App extends Component {
         <h1>The X Effect</h1>
         {cards}
         Add a new Card
+        <CardForm />
       </div>
     );
   }
@@ -32,7 +34,8 @@ export class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    cards: state.cards
+    cards: state.card.cards,
+    newCard: state.newCard
   };
 };
 

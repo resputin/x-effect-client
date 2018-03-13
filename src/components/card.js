@@ -15,7 +15,7 @@ export function Card(props) {
 
 const mapStateToProps = state => {
   return {
-    cards: state.cards
+    cards: state.card.cards
   }
 }
 

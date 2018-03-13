@@ -9,7 +9,8 @@ import {
 const intialState = {
   loading: false,
   error: null,
-  cards: {}
+  cards: {},
+  newCard: false
 };
 
 export default function reducer(state = intialState, action) {
