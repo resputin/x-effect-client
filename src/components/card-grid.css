@@ -7,9 +7,16 @@
 .grid-square {
   border: 1px solid black;
   width: 14.285714286%;
-  height: 14.285714286%
+  height: 14.285714286%;
+  background-color: rgb(216, 216, 216);
 }
 
 .complete {
   color: red;
+}
+
+.active {
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
