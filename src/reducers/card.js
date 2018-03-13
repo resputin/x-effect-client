@@ -7,15 +7,19 @@ import {
 const intialState = {
   loading: false,
   error: null,
-  cards: []
+  cards: {}
 };
 
 export default function reducer(state = intialState, action) {
   if (action.type === FETCH_CARDS_REQUEST) {
     return Object.assign({}, state, { loading: true });
   } else if (action.type === FETCH_CARDS_SUCCESS) {
+    const cardObj = {};
+    action.cards.forEach(card => {
+      cardObj[card.id] = card;
+    })
     return Object.assign({}, state, {
-      cards: action.cards,
+      cards: cardObj,
       loading: false
     });
   } else if (action.type === FETCH_CARDS_ERROR) {

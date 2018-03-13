@@ -10,9 +10,15 @@ export class App extends Component {
   }
 
   render() {
-    const cards = this.props.cards.map(card => {
-      return <Card card={card} key={card.id}/>
-    });
+    const cards = [];
+    for (let key in this.props.cards) {
+      cards.push(<Card id={key} key={key} />)
+    }
+    
+    
+    // const cards = this.props.cards.map(card => {
+    //   return <Card card={card} key={card.id} />;
+    // });
 
     return (
       <div>

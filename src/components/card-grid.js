@@ -1,7 +1,8 @@
 import React from 'react';
 import './card-grid.css';
+import { connect } from 'react-redux';
 
-export default function CardGrid(props) {
+export function CardGrid(props) {
   /**
    * Generates the entire grid by calling generate row for 7 rows.
    * Returns an html table.
@@ -43,12 +44,16 @@ export default function CardGrid(props) {
             O
           </div>
         );
-      } else if (
+      } else if (row * 7 + i === props.xArray.length) {
         // make the next available square active
-        props.xArray[row * 7 + i - 1] !== undefined &&
-        (props.xArray[row * 7 + i - 2] !== undefined || row * 7 + i - 2 <= 0)
-      ) {
-        cell = <div className="active" key={row * 7 + i} />;
+        cell = (
+          <input
+            type="checkbox"
+            className="active"
+            key={row * 7 + i}
+            onChange={e => console.log(e.target)}
+          />
+        );
       } else {
         cell = <div className="pending" key={row * 7 + i} />;
       }
@@ -63,3 +68,5 @@ export default function CardGrid(props) {
 
   return generateGrid();
 }
+
+export default connect()(CardGrid);
