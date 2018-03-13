@@ -6,6 +6,9 @@ export const FETCH_CARDS_ERROR = 'FETCH_CARDS_ERROR';
 export const CHECK_CARD_REQUEST = 'CHECK_CARD_REQUEST';
 export const CHECK_CARD_SUCCESS = 'CHECK_CARD_SUCCESS';
 export const CHECK_CARD_ERROR = 'CHECK_CARD_ERROR';
+export const ADD_CARD_REQUEST = 'ADD_CARD_REQUEST';
+export const ADD_CARD_SUCCESS = 'ADD_CARD_SUCCESS';
+export const ADD_CARD_ERROR = 'ADD_CARD_ERROR';
 
 const fetchCardsRequest = () => ({
   type: FETCH_CARDS_REQUEST
@@ -54,3 +57,25 @@ export const checkX = id => dispatch => {
   .catch(err => dispatch(checkCardError(err)));
 }
 
+const addCardRequest = () => ({
+  type: ADD_CARD_REQUEST
+});
+
+const addCardError = err => ({
+  type: ADD_CARD_ERROR,
+})
+
+export const addCard = value => dispatch => {
+  dispatch(addCardRequest());
+  fetch(`${API_BASE_URL}/cards`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: value
+    })
+  })
+    .then(() => dispatch(fetchCards()))
+    .catch(err => dispatch(addCardError(err)));
+}

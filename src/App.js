@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchCards } from './actions/card';
+import { fetchCards, addCard } from './actions/card';
 import Card from './components/card'
 import CardForm from './components/card-form';
+import Navigation from "./components/navigation";
 
 export class App extends Component {
   componentDidMount() {
@@ -24,9 +25,10 @@ export class App extends Component {
     return (
       <div>
         <h1>The X Effect</h1>
+        <Navigation />
         {cards}
         Add a new Card
-        <CardForm />
+        <CardForm onSubmit={value => this.props.dispatch(addCard(value))}/>
       </div>
     );
   }

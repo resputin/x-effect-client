@@ -2,8 +2,7 @@ import {
   FETCH_CARDS_ERROR,
   FETCH_CARDS_REQUEST,
   FETCH_CARDS_SUCCESS,
-  CHECK_CARD_REQUEST,
-  CHECK_CARD_SUCCESS
+  CHECK_CARD_REQUEST
 } from '../actions/card';
 
 const intialState = {
