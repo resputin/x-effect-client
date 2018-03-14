@@ -1,25 +1,34 @@
 .app {
   display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: 80px auto;
+  /* grid-template-columns: 1fr 3fr; */
+  /* grid-template-rows: 80px auto; */
+  grid-template-areas: 
+    "header"
+    "nav" 
+    "main"
+    
+}
+
+@media (min-width: 500px) {
+  .app {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+      "header  header"
+      "nav     main";
+  }
 }
 
 .header {
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-area: header;
   text-align: center;
 }
 
 .nav {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
+  grid-area: nav;
 }
 
 .main {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
+  grid-area: main;
 }
 
 .newCard {
