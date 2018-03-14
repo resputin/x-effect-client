@@ -5,3 +5,10 @@
 .navigation ul {
   list-style-type: none;
 }
+
+:target:before {
+content:"";
+display:block;
+height:150px; /* fixed header height*/
+margin:-150px 0 0; /* negative fixed header height */
+}

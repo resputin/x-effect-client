@@ -14,12 +14,11 @@ export class App extends Component {
   render() {
     const cards = [];
     for (let key in this.props.cards) {
-      cards.push(<Card id={key} key={key} />);
+      const pointer = `card_${key}`
+      cards.push(<section id={pointer} key={key}>
+          <Card id={key} />
+        </section>);
     }
-
-    // const cards = this.props.cards.map(card => {
-    //   return <Card card={card} key={card.id} />;
-    // });
 
     return (
       <div className="app">

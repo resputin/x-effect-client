@@ -6,7 +6,8 @@ export function Navigation(props) {
 
   const cardNames = [];
   for (let key in props.cards) {
-    cardNames.push(<li id={key} key={key} >{props.cards[key].name}</li>);
+    const pointer = `#card_${props.cards[key].id}`;
+    cardNames.push(<li id={key} key={key} ><a href={pointer} className="anchor">{props.cards[key].name}</a></li>);
   }
   return <div className="navigation">
       <h3>My Cards</h3>
