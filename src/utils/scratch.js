@@ -14,3 +14,7 @@ const intialState = {
 const { cards } = intialState;
 
 console.log(Object.assign({}, intialState, cards ,{ a: {xArray: [true, true, true, true]}}));
+
+
+
+
