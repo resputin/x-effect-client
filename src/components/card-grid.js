@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import './card-grid.css';
 
 export default function CardGrid(props) {
@@ -31,20 +32,26 @@ export default function CardGrid(props) {
 
     for (let i = 0; i < 7; i++) {
       let cell;
-      if (props.xArray[row * 7 + i] === true) {
+      if (props.card.cardEvents[row * 7 + i].status === 'COMPLETED') {
         cell = (
           <div className="complete" key={row * 7 + i}>
             X
           </div>
         );
-      } else if (props.xArray[row * 7 + i] === false) {
+      } else if (props.card.cardEvents[row * 7 + i].status === 'MISSED') {
         cell = (
           <div className="incomplete" key={row * 7 + i}>
             O
           </div>
         );
-      } else if (row * 7 + i === props.xArray.length) {
-        const label = `Input for ${props.name} Card`
+      } else if (
+        moment(props.card.cardEvents[row * 7 + i].expires).valueOf() ===
+        moment()
+          .startOf('day')
+          .add(1, 'day')
+          .valueOf()
+      ) {
+        const label = `Input for ${props.name} Card`;
         // make the next available square active
         cell = (
           <input
@@ -52,7 +59,7 @@ export default function CardGrid(props) {
             title={label}
             className="active"
             key={row * 7 + i}
-            onChange={() => props.onCheck()}
+            onChange={() => props.onCheck(props.card.cardEvents[row * 7 + i].id)}
           />
         );
       } else {

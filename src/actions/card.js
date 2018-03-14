@@ -26,7 +26,7 @@ const fetchCardsError = error => ({
 
 export const fetchCards = () => dispatch => {
   dispatch(fetchCardsRequest());
-  return fetch(API_BASE_URL)
+  return fetch(`${API_BASE_URL}/cards`)
     .then(res => res.json())
     .then(res => dispatch(fetchCardsSuccess(res)))
     .catch(err => dispatch(fetchCardsError(err)));
@@ -43,14 +43,14 @@ const checkCardError = error => ({
 
 export const checkX = id => dispatch => {
   dispatch(checkCardRequest);
-  return fetch(`${API_BASE_URL}/cards/${id}`, {
+  return fetch(`${API_BASE_URL}/cardEvents/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       id,
-      xArray: true
+      status: 'COMPLETED'
     })
   })
   .then(() => dispatch(fetchCards()))
