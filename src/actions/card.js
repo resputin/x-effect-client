@@ -43,7 +43,7 @@ const checkCardError = error => ({
 
 export const checkX = id => dispatch => {
   dispatch(checkCardRequest);
-  return fetch(`${API_BASE_URL}/cards/${id}`, {
+  return fetch(`${API_BASE_URL}/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const addCardError = err => ({
 
 export const addCard = value => dispatch => {
   dispatch(addCardRequest());
-  fetch(`${API_BASE_URL}/cards`, {
+  fetch(`${API_BASE_URL}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
