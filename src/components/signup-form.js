@@ -4,7 +4,7 @@ import { registerUser } from '../actions/users';
 import { login } from '../actions/auth';
 import { required, nonEmpty, matches, length, isTrimmed, isEmail } from '../validators';
 import Input from './input';
-const passwordLength = length({ min: 10, max: 72 });
+const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('password');
 
 

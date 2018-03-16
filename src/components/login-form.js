@@ -8,8 +8,15 @@ export function LoginForm(props) {
   function onSubmit(values) {
     return props.dispatch(login(values.email, values.password));
   }
+
+  let errorMessage;
+  if (props.error) {
+    errorMessage = <div className="message message-error">{props.error}</div>;
+  }
+
   return (
     <form onSubmit={props.handleSubmit(values => onSubmit(values))}>
+    {errorMessage}
       <label htmlFor="email">
         Email
         <Field component={Input} type="email" name="email" validate={[required, isEmail]}/>
@@ -24,6 +31,7 @@ export function LoginForm(props) {
 
 export default reduxForm({
   form: 'login',
-  onSubmitFail: (errors, dispatch) =>
+  onSubmitFail: (errors, dispatch) => {
     dispatch(focus('login', Object.keys(errors)[0]))
+  }
 })(LoginForm);
