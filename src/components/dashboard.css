@@ -1,0 +1,35 @@
+.dashboard {
+  display: grid;
+  grid-template-areas: 
+    "nav" 
+    "main";
+}
+
+.navigation {
+  grid-area: nav;
+}
+
+.main {
+  display: grid;
+  grid-area: main;
+}
+
+.newCard {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+@media (min-width: 500px) {
+  .dashboard {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+      "nav     main";
+  }
+
+  .navigation {
+    position: sticky;
+    top: 120px;
+    height: 10vh;
+    box-sizing: border-box;
+  }
+}

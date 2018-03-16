@@ -1,23 +1,56 @@
+import jwtDecode from 'jwt-decode';
+import { SubmissionError } from 'redux-form';
+
 import { API_BASE_URL } from '../config';
-const LOGIN_REQUEST = 'LOGIN_REQUEST';
-const LOGIN_ERROR = 'LOGIN_ERROR';
+import { normalizeResponseErrors } from './utils';
+import { saveAuthToken, clearAuthToken } from '../local-storage';
+import { fetchCards } from './card';
 
-
-const loginRequest = () => ({
-  type: LOGIN_REQUEST
+export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
+export const setAuthToken = authToken => ({
+  type: SET_AUTH_TOKEN,
+  authToken
 });
 
-const loginSuccess = token => {
-  localStorage.setItem('token', token);
-};
+export const CLEAR_AUTH = 'CLEAR_AUTH';
+export const clearAuth = () => ({
+  type: CLEAR_AUTH
+});
 
-const loginError = error => ({
-  type: LOGIN_ERROR,
+export const AUTH_REQUEST = 'AUTH_REQUEST';
+export const authRequest = () => ({
+  type: AUTH_REQUEST
+});
+
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const authSuccess = currentUser => ({
+  type: AUTH_SUCCESS,
+  currentUser
+});
+
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const authError = error => ({
+  type: AUTH_ERROR,
   error
 });
 
+export const INACTIVE = 'INACTIVE';
+export const setInactive = inactive => ({
+  type: INACTIVE,
+  inactive
+});
+
+const storeAuthInfo = (authToken, dispatch) => {
+  const decodedToken = jwtDecode(authToken);
+  dispatch(setAuthToken(authToken));
+  dispatch(authSuccess(decodedToken.user));
+  saveAuthToken(authToken);
+  dispatch(fetchCards());
+  return;
+};
+
 export const login = (email, password) => dispatch => {
-  dispatch(loginRequest());
+  dispatch(authRequest());
   return fetch(`${API_BASE_URL}/login`, {
     method: 'POST',
     headers: {
@@ -28,7 +61,39 @@ export const login = (email, password) => dispatch => {
       password
     })
   })
+    .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(token => loginSuccess(token.authToken))
-    .catch(err => dispatch(loginError(err)));
+    .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+    .catch(err => {
+      const { code } = err;
+      const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
+      dispatch(authError(err));
+      // Could not authenticate, so return a SubmissionError for Redux
+      // Form
+      return Promise.reject(new SubmissionError({ _error: message }));
+    });
 };
+
+export const refreshAuthToken = () => (dispatch, getState) => {
+  dispatch(authRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/refresh`, {
+    method: 'POST',
+    headers: {
+      // Provide our existing token as credentials to get a new one
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+    .catch(err => {
+      // We couldn't get a refresh token because our current credentials
+      // are invalid or expired, or something else went wrong, so clear
+      // them and sign us out
+      dispatch(authError(err));
+      dispatch(clearAuth());
+      clearAuthToken(authToken);
+    });
+};
+

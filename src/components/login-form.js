@@ -1,9 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { login } from '../actions/auth';
 
 export function LoginForm(props) {
+  function onSubmit(values) {
+    return props.dispatch(login(values.email, values.password));
+  }
   return (
-    <form onSubmit={props.handleSubmit(value => props.onSubmit(value))}>
+    <form onSubmit={props.handleSubmit(values => onSubmit(values))}>
       <label htmlFor="email">
         Email
         <Field component="input" type="email" name="email" />

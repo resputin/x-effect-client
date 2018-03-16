@@ -29,12 +29,15 @@ export const fetchCards = () => dispatch => {
   return fetch(`${API_BASE_URL}/cards`, {
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
     }
   })
     .then(res => res.json())
     .then(res => dispatch(fetchCardsSuccess(res)))
-    .catch(err => dispatch(fetchCardsError(err)));
+    .catch(err => {
+      console.log(err)
+      dispatch(fetchCardsError(err))
+    });
 }
 
 const checkCardRequest = () => ({
@@ -52,7 +55,7 @@ export const checkX = id => dispatch => {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
     },
     body: JSON.stringify({
       id,
@@ -77,7 +80,7 @@ export const addCard = value => dispatch => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
     },
     body: JSON.stringify({
       name: value
