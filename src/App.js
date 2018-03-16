@@ -1,47 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchCards, addCard } from './actions/card';
-import Card from './components/card';
-import CardForm from './components/card-form';
-import Navigation from './components/navigation';
+import Dashboard from "./components/dashboard";
+import { Route, withRouter } from 'react-router-dom';
+import LoginPage from './components/login-page';
+import SplashPage from './components/splash-page';
+import SignupPage from './components/signup-page';
+import Header from './components/header';
 
 export class App extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchCards());
-  }
 
   render() {
-    const cards = [];
-    for (let key in this.props.cards) {
-      const pointer = `card_${key}`
-      cards.push(<section id={pointer} key={key}>
-          <Card id={key} />
-        </section>);
-    }
-
-    return (
-      <div className="app">
-        <h1 className="header">The X Effect</h1>
-        <Navigation className="nav" role="navigation"/>
-        <div className="main">
-          <div className="newCard" role="form">
-            <CardForm onSubmit={value => this.props.dispatch(addCard(value))} />
-          </div>
-          <div role="main">
-            {cards}
-          </div>
-        </div>
-      </div>
-    );
+    return <div className="app">
+        <Header />
+        <Route exact path="/" component={SplashPage} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/signup" component={SignupPage} />
+        <Route exact path="/login" component={LoginPage} />
+      </div>;
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    cards: state.card.cards,
-    newCard: state.newCard
-  };
-};
+const mapStateToProps = state => ({
+  hasAuthToken: state.auth.authToken !== null,
+  loggedIn: state.auth.currentUser !== null
+});
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
