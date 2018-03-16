@@ -31,7 +31,7 @@ export function SignUpForm(props) {
       </label>
       <label htmlFor="name">
         Name
-        <Field component={Input} type="text" name="name" />
+        <Field component={Input} type="text" name="name" validate={[required, nonEmpty, isTrimmed]}/>
       </label>
       <label htmlFor="password">
         Password <Field component={Input} type="password" name="password" validate={[required, passwordLength, isTrimmed]}/>
