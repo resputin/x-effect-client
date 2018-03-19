@@ -12,7 +12,7 @@ export function SplashPage(props) {
   }
 
   return <div className="home" role="main">
-      <div className="navigation splash-login">
+      <div className="splash-login">
         <h4>Log In</h4>
         <LoginForm />
       </div>
