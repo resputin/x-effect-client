@@ -50,7 +50,6 @@ export default function CardGrid(props) {
           .add(1, 'day')
           .valueOf()
       ) {
-        console.log('here')
         const label = `Input for ${props.card.name} Card`;
         // make the next available square active
         cell = (
