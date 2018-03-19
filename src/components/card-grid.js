@@ -53,13 +53,14 @@ export default function CardGrid(props) {
         const label = `Input for ${props.card.name} Card`;
         // make the next available square active
         cell = (
+          <label className="active">
           <input
             type="checkbox"
             title={label}
-            className="active"
             key={row * 7 + i}
             onChange={() => props.onCheck(props.card.cardEvents[row * 7 + i].id)}
-          />
+          /> <span></span>
+          </label>
         );
       } else {
         cell = <div className="pending" key={row * 7 + i} />;
