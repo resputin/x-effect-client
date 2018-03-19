@@ -1,0 +1,19 @@
+.card-form input {
+  width: 50%;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  font-size: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card-form label {
+  font-size: 20px;
+}
+
+.card-form button {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 8px 8px 8px 8px;
+}

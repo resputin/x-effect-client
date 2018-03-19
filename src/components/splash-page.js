@@ -15,7 +15,6 @@ export function SplashPage(props) {
       <div className="navigation splash-login">
         <h4>Log In</h4>
         <LoginForm />
-        <Link to="/signup">Sign Up</Link>
       </div>
       <div className="main splash-main">
         <h3>What is the X Effect?</h3>

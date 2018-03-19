@@ -64,7 +64,7 @@ export function SignUpForm(props) {
         validate={[required, nonEmpty, matchesPassword]}
       />
       <button type="submit" className="signup-button">
-        Log in
+        Register
       </button>
     </form>
   );
