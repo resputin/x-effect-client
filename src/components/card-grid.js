@@ -29,7 +29,6 @@ export default function CardGrid(props) {
    */
   function generateRow(row) {
     const cells = [];
-
     for (let i = 0; i < 7; i++) {
       let cell;
       if (props.card.cardEvents[row * 7 + i].status === 'COMPLETED') {
@@ -45,13 +44,14 @@ export default function CardGrid(props) {
           </div>
         );
       } else if (
-        moment(props.card.cardEvents[row * 7 + i].expires).valueOf() ===
+        moment(props.card.cardEvents[row * 7 + i].expires).add(7, 'hours').valueOf() ===
         moment()
           .startOf('day')
           .add(1, 'day')
           .valueOf()
       ) {
-        const label = `Input for ${props.name} Card`;
+        console.log('here')
+        const label = `Input for ${props.card.name} Card`;
         // make the next available square active
         cell = (
           <input
