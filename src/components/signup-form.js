@@ -2,45 +2,72 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { registerUser } from '../actions/users';
 import { login } from '../actions/auth';
-import { required, nonEmpty, matches, length, isTrimmed, isEmail } from '../validators';
+import {
+  required,
+  nonEmpty,
+  matches,
+  length,
+  isTrimmed,
+  isEmail
+} from '../validators';
 import Input from './input';
+import './signup-form.css';
 const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('password');
 
-
 export function SignUpForm(props) {
   function onSubmit(values) {
-    const {email, name, password} = values;
-    const user = {email, name, password};
-    return props.dispatch(registerUser(user))
-      .then(() => props.dispatch(login(email, password)))
+    const { email, name, password } = values;
+    const user = { email, name, password };
+    return props
+      .dispatch(registerUser(user))
+      .then(() => props.dispatch(login(email, password)));
   }
 
   let errorMessage;
   if (props.error) {
-    errorMessage = <div className="message message-error">
-        {props.error}
-      </div>;
+    errorMessage = <div className="message message-error">{props.error}</div>;
   }
 
-  return <form onSubmit={props.handleSubmit(value => onSubmit(value))}>
+  return (
+    <form
+      onSubmit={props.handleSubmit(value => onSubmit(value))}
+      className="signup-form"
+    >
       {errorMessage}
-      <label htmlFor="email">
-        Email
-        <Field component={Input} type="email" name="email" validate={[required, nonEmpty, isTrimmed, isEmail]}/>
-      </label>
-      <label htmlFor="name">
-        Name
-        <Field component={Input} type="text" name="name" validate={[required, nonEmpty, isTrimmed]}/>
-      </label>
-      <label htmlFor="password">
-        Password <Field component={Input} type="password" name="password" validate={[required, passwordLength, isTrimmed]}/>
-      </label>
-      <label htmlFor="password confirmation">
-        Confirm Password <Field component={Input} type="password" name="passwordConfirmation" validate={[required, nonEmpty, matchesPassword]}/>
-      </label>
-      <button type="submit">Log in</button>
-    </form>;
+      <Field
+        component={Input}
+        type="email"
+        name="email"
+        label="Email"
+        validate={[required, nonEmpty, isTrimmed, isEmail]}
+      />
+      <Field
+        component={Input}
+        type="text"
+        name="name"
+        label="Name"
+        validate={[required, nonEmpty, isTrimmed]}
+      />
+      <Field
+        component={Input}
+        type="password"
+        name="password"
+        label="Password"
+        validate={[required, passwordLength, isTrimmed]}
+      />
+      <Field
+        component={Input}
+        type="password"
+        name="passwordConfirmation"
+        label="Confirm Password"
+        validate={[required, nonEmpty, matchesPassword]}
+      />
+      <button type="submit" className="signup-button">
+        Log in
+      </button>
+    </form>
+  );
 }
 
 export default reduxForm({

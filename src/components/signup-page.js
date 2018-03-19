@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-
 import SignupForm from './signup-form';
+import './signup-page.css';
 
 export function SignupPage(props) {
   // If we are logged in (which happens automatically when Signup
@@ -11,7 +11,7 @@ export function SignupPage(props) {
     return <Redirect to="/dashboard" />;
   }
   return (
-    <div className="home">
+    <div className="signup" role="main">
       <h2>Register for The X Effect</h2>
       <SignupForm />
     </div>

@@ -1,0 +1,34 @@
+.home {
+  display: grid;
+    grid-template-areas: 
+    "nav" 
+    "main";
+}
+
+.splash-login {
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.splash-main {
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+@media (min-width: 500px) {
+  .home {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+      "nav     main";
+  }
+
+  .navigation {
+    position: sticky;
+    top: 120px;
+    height: 10vh;
+    box-sizing: border-box;
+  }
+}
+

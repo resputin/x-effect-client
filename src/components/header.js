@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { clearAuth } from "../actions/auth";
 import { clearAuthToken } from "../local-storage";
+import './header.css';
 
 export function Header(props) {
   function logOut() {
@@ -12,7 +13,7 @@ export function Header(props) {
   let logOutButton;
   if (props.loggedIn) {
     logOutButton = (
-      <button onClick={() => logOut()}>Log Out</button>
+      <button onClick={() => logOut()} className="logout-button">Log Out</button>
     )
   }
   return (

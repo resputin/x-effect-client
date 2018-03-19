@@ -17,13 +17,8 @@ export function LoginForm(props) {
   return (
     <form onSubmit={props.handleSubmit(values => onSubmit(values))}>
     {errorMessage}
-      <label htmlFor="email">
-        Email
-        <Field component={Input} type="email" name="email" validate={[required, isEmail]}/>
-      </label>
-      <label htmlFor="password">
-        Password <Field component={Input} type="password" name="password" validate={[required]}/>
-      </label>
+        <Field component={Input} type="email" name="email" label="Email" validate={[required, isEmail]}/>
+        <Field component={Input} type="password" name="password" label="Password" validate={[required]}/>
       <button type="submit">Log in</button>
     </form>
   );
