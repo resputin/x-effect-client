@@ -25,7 +25,6 @@ const fetchCardsError = error => ({
 });
 
 export const fetchCards = () => dispatch => {
-  console.log(API_BASE_URL);
   dispatch(fetchCardsRequest());
   return fetch(`${API_BASE_URL}/cards`, {
     method: 'GET',
