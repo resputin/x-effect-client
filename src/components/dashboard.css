@@ -12,6 +12,7 @@
 .main {
   display: grid;
   grid-area: main;
+  margin-bottom: 100px;
 }
 
 .newCard {
