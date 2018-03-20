@@ -28,7 +28,6 @@ export default function CardGrid(props) {
    *
    */
   function generateRow(row) {
-    // console.log(moment(props.card.cardEvents[0].expires).diff(moment(props.card.created)) < 86400000);
     const cells = [];
     for (let i = 0; i < 7; i++) {
       
@@ -48,7 +47,8 @@ export default function CardGrid(props) {
       } else if (
         moment(props.card.cardEvents[row * 7 + i].expires).valueOf() -
           moment().valueOf() <
-        86400000
+        86400000 && moment(props.card.cardEvents[row * 7 + i].expires).valueOf() -
+          moment().valueOf() >= 0
       ) {
         const label = `Input for ${props.card.name} Card`;
         // make the next available square active
