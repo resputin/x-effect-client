@@ -2,17 +2,18 @@ import {
   FETCH_CARDS_ERROR,
   FETCH_CARDS_REQUEST,
   FETCH_CARDS_SUCCESS,
-  CHECK_CARD_REQUEST
+  CHECK_CARD_REQUEST,
+  CLEAR_CARDS
 } from '../actions/card';
 
-const intialState = {
+const initialState = {
   loading: false,
   error: null,
   cards: {},
   newCard: false
 };
 
-export default function reducer(state = intialState, action) {
+export default function reducer(state = initialState, action) {
   if (action.type === FETCH_CARDS_REQUEST) {
     return Object.assign({}, state, { loading: true });
   } else if (action.type === FETCH_CARDS_SUCCESS) {
@@ -33,14 +34,8 @@ export default function reducer(state = intialState, action) {
     });
   } else if (action.type === CHECK_CARD_REQUEST) {
     return Object.assign({}, state, { loading: true });
-  // } else if (action.type === CHECK_CARD_SUCCESS) {
-  //   const id = action.id
-  //   const {id, ...oldCards} = state.cards;
-  //   const cards = {cards: }
-  //   Object.assign({}, state, {cards: {
-  //     id: action.card,
-  //     oldCards
-  //   } })
+  } else if (action.type === CLEAR_CARDS) {
+    return Object.assign({}, state, initialState)
   }
   return state;
 }

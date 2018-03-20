@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { clearAuth } from "../actions/auth";
+import { clearCards } from '../actions/card'
 import { clearAuthToken } from "../local-storage";
 import './header.css';
 
 export function Header(props) {
   function logOut() {
     props.dispatch(clearAuth());
+    props.dispatch(clearCards())
     clearAuthToken();
   }
 

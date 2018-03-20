@@ -9,6 +9,7 @@ export const CHECK_CARD_ERROR = 'CHECK_CARD_ERROR';
 export const ADD_CARD_REQUEST = 'ADD_CARD_REQUEST';
 export const ADD_CARD_SUCCESS = 'ADD_CARD_SUCCESS';
 export const ADD_CARD_ERROR = 'ADD_CARD_ERROR';
+export const CLEAR_CARDS = 'CLEAR_CARDS';
 
 const fetchCardsRequest = () => ({
   type: FETCH_CARDS_REQUEST
@@ -89,3 +90,7 @@ export const addCard = value => dispatch => {
     .then(() => dispatch(fetchCards()))
     .catch(err => dispatch(addCardError(err)));
 }
+
+export const clearCards = () => ({
+  type: CLEAR_CARDS
+});
