@@ -1,20 +1,8 @@
-const intialState = {
-  loading: false,
-  error: null,
-  cards: {b: {
-    "name": "Run every day",
-    "xArray": [true]
-  },
-  a: {
-    "name": "Eat Healthy",
-    "xArray": [true, true, false]
-  }}
-};
+const moment = require('moment');
 
-const { cards } = intialState;
+let now = moment().valueOf();
+let tomorrow = moment().add(1, 'day').valueOf()
 
-console.log(Object.assign({}, intialState, cards ,{ a: {xArray: [true, true, true, true]}}));
-
-
+console.log(tomorrow,  now)
 
 

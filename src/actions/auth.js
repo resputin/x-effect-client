@@ -50,6 +50,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 };
 
 export const login = (email, password) => dispatch => {
+  console.log(API_BASE_URL)
   dispatch(authRequest());
   return fetch(`${API_BASE_URL}/login`, {
     method: 'POST',

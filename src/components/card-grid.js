@@ -28,8 +28,10 @@ export default function CardGrid(props) {
    *
    */
   function generateRow(row) {
+    // console.log(moment(props.card.cardEvents[0].expires).diff(moment(props.card.created)) < 86400000);
     const cells = [];
     for (let i = 0; i < 7; i++) {
+      
       let cell;
       if (props.card.cardEvents[row * 7 + i].status === 'COMPLETED') {
         cell = (
@@ -44,22 +46,23 @@ export default function CardGrid(props) {
           </div>
         );
       } else if (
-        moment(props.card.cardEvents[row * 7 + i].expires).add(7, 'hours').valueOf() ===
-        moment()
-          .startOf('day')
-          .add(1, 'day')
-          .valueOf()
+        moment(props.card.cardEvents[row * 7 + i].expires).valueOf() -
+          moment().valueOf() <
+        86400000
       ) {
         const label = `Input for ${props.card.name} Card`;
         // make the next available square active
         cell = (
           <label className="active">
-          <input
-            type="checkbox"
-            title={label}
-            key={row * 7 + i}
-            onChange={() => props.onCheck(props.card.cardEvents[row * 7 + i].id)}
-          /> <span></span>
+            <input
+              type="checkbox"
+              title={label}
+              key={row * 7 + i}
+              onChange={() =>
+                props.onCheck(props.card.cardEvents[row * 7 + i].id)
+              }
+            />{' '}
+            <span />
           </label>
         );
       } else {
