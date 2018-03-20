@@ -22,3 +22,8 @@ export const isEmail = value => {
     return 'You must supply a valid email address'
   };
 };
+export const isPhoneNumber = value => {
+  if (!value.match(/[0-9]{9}/)) {
+    return 'Please enter a 9 digit phone number with no spaces';
+  }
+}
