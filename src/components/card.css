@@ -8,12 +8,28 @@
   margin-bottom: 50px;
   border-radius: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-
 }
 
 .title {
   /* border-bottom: 1px solid black; */
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-left: 10%;
+  display: inline-block
 }
+
+img {
+  height: 25px;
+}
+
+.settings {
+  float: right;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
 

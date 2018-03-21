@@ -4,12 +4,17 @@
 }
 
 h1 {
-  
+  display: inline-block;
+  margin-left: 15%;
+  width: 60%;
 }
 
 .logout-button {
+  /* float: right; */
   background-color: black;
   color: white;
   font-size: 20px;
   padding: 8px 8px 8px 8px;
+  margin-right: 3%;
+  margin-top: 20px;
 }
