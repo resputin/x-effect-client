@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import './card-grid.css';
+import x from "../images/x.png";
+import o from "../images/letter-O.png";
 
 export default function CardGrid(props) {
   /**
@@ -35,13 +37,13 @@ export default function CardGrid(props) {
       if (props.card.cardEvents[row * 7 + i].status === 'COMPLETED') {
         cell = (
           <div className="complete" key={row * 7 + i}>
-            X
+            <img src={x} alt="A red X" />
           </div>
         );
       } else if (props.card.cardEvents[row * 7 + i].status === 'MISSED') {
         cell = (
           <div className="incomplete" key={row * 7 + i}>
-            O
+            <img src={o} alt="A black O"/>
           </div>
         );
       } else if (
