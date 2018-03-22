@@ -16,11 +16,13 @@
   color: red;
   font-weight: 600;
   font-size: 24px;
+  text-align: center;
 }
 
 .incomplete {
   font-weight: 600;
   font-size: 24px;
+  text-align: center;
 }
 
 .active input {
