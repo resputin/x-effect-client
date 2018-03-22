@@ -20,17 +20,21 @@ export class Dashboard extends Component {
       );
     }
 
-    return (
-      <div className="dashboard">
+    return <div className="dashboard">
         <Navigation className="nav" role="navigation" />
         <div className="main">
           <div className="newCard" role="form">
-            <CardForm onSubmit={value => this.props.dispatch(addCard(value))} />
+            {/*  */}
+            <CardForm onSubmit={value => {
+              const submission = {};
+              submission.created = Date();
+              submission.name = value;
+              this.props.dispatch(addCard(submission))
+            }} />
           </div>
           <div role="main">{cards}</div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 

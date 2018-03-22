@@ -5,7 +5,7 @@ import './card-form.css';
 export function CardForm(props) {
 
   return <form onSubmit={props.handleSubmit(value =>
-        props.onSubmit(value.title)
+        props.onSubmit(value)
       )} className="card-form">
       <label htmlFor="title">
         Add a new Card
