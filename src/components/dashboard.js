@@ -28,7 +28,7 @@ export class Dashboard extends Component {
             <CardForm onSubmit={value => {
               const submission = {};
               submission.created = Date();
-              submission.name = value;
+              submission.name = value.title;
               this.props.dispatch(addCard(submission))
             }} />
           </div>
