@@ -84,7 +84,8 @@ export const addCard = value => dispatch => {
       'Authorization': `Bearer ${localStorage.getItem('authToken')}`
     },
     body: JSON.stringify({
-      name: value
+      name: value.name,
+      created: value.created
     })
   })
     .then(() => dispatch(fetchCards()))

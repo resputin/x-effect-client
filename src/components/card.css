@@ -1,19 +1,52 @@
 .card {
-  text-align: center;
+  text-align: left;
   border: 1px solid black;
   border-top: 6px solid rgb(0, 0, 0);
-  width: 90%;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
   border-radius: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-
 }
 
 .title {
   /* border-bottom: 1px solid black; */
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-left: 2%;
+  display: inline-block
 }
 
+img {
+  height: 25px;
+}
+
+.settings {
+  float: right;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.notification-delete {
+  text-align: right;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 8px 8px 8px 8px;
+}
+
+.notification-settings-title {
+  margin-left: 2%;
+}
+
+@media (min-width: 680px) {
+  .card {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
