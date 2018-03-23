@@ -13,7 +13,10 @@ The X Effect is a habit tracking movement inspired by a reddit post by someone w
 This application takes a lot of the logistical work away and lets you focus on the thing that matters, completing your card. In addition, this application allows for some extra features that don't exist when you are doing this method physically. You can set up SMS reminders to remind you if you haven't completed a card for that day, and the application will automatically mark things off as incomplete at the end of each day. 
 
 ## Examples
+### Adding Cards
 ![A gif of a card being added](https://github.com/resputin/x-effect-client/blob/master/src/images/Add%20Card%20Flow.gif)
+
+### Adding Card Notifications
 ![A gif of a notifcation being created](https://github.com/resputin/x-effect-client/blob/master/src/images/Notification%20Flow.gif)
 
 ## Tech Stack
