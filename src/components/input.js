@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * This is all from Joe. It was too good to not use.
+ * Thanks Joe!
+ */
 export default class Input extends React.Component {
   render() {
     const Element = this.props.element || 'input';

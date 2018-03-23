@@ -1,8 +1,12 @@
-import { SubmissionError } from "redux-form";
+import { SubmissionError } from 'redux-form';
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
 
-import { API_BASE_URL } from "../config";
-import { normalizeResponseErrors } from "./utils";
-
+/**
+ * Register user will send an async fetch to POST /users
+ * to create a new user on the database. If this user is
+ * successfully created than it will confirm it.
+ */
 export const registerUser = user => dispatch => {
   return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',
@@ -16,10 +20,11 @@ export const registerUser = user => dispatch => {
     .catch(err => {
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {
-        // Convert ValidationErrors into SubmissionErrors for Redux Form
-        return Promise.reject(new SubmissionError({
+        return Promise.reject(
+          new SubmissionError({
             [location]: message
-          }));
+          })
+        );
       }
-    })
-}
+    });
+};

@@ -1,9 +1,16 @@
 import React from 'react';
 import moment from 'moment';
 import './card-grid.css';
-import x from "../images/x.png";
-import o from "../images/letter-O.png";
+import x from '../images/x.png';
+import o from '../images/letter-O.png';
 
+/**
+ * Card grid handles making the table for the card. It will fill out
+ * the previous cells and make todays cell available to be checked.
+ * It works by iterating over 7 rows and generating 7 cells per row.
+ * Each of these cells corresponds to a CardEvent that exists in the
+ * database which are accessed by CardGrid as an array of objects.
+ */
 export default function CardGrid(props) {
   /**
    * Generates the entire grid by calling generate row for 7 rows.
@@ -32,7 +39,6 @@ export default function CardGrid(props) {
   function generateRow(row) {
     const cells = [];
     for (let i = 0; i < 7; i++) {
-      
       let cell;
       if (props.card.cardEvents[row * 7 + i].status === 'COMPLETED') {
         cell = (
@@ -43,14 +49,16 @@ export default function CardGrid(props) {
       } else if (props.card.cardEvents[row * 7 + i].status === 'MISSED') {
         cell = (
           <div className="incomplete" key={row * 7 + i}>
-            <img src={o} alt="A black O"/>
+            <img src={o} alt="A black O" />
           </div>
         );
       } else if (
         moment(props.card.cardEvents[row * 7 + i].expires).valueOf() -
           moment().valueOf() <
-        86400000 && moment(props.card.cardEvents[row * 7 + i].expires).valueOf() -
-          moment().valueOf() >= 0
+          86400000 &&
+        moment(props.card.cardEvents[row * 7 + i].expires).valueOf() -
+          moment().valueOf() >=
+          0
       ) {
         const label = `Input for ${props.card.name} Card`;
         // make the next available square active

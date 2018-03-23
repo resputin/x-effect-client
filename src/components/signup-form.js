@@ -15,6 +15,11 @@ import './signup-form.css';
 const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('password');
 
+/**
+ * SignUp form is a ReduxForm component that is relatively straightforward.
+ * It uses Joe's Input component to handle a lot of the variablility. A lot
+ * of logic here was taken from the course work on redux form.
+ */
 export function SignUpForm(props) {
   function onSubmit(values) {
     const { email, name, password } = values;

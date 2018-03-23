@@ -4,9 +4,12 @@ import { Redirect } from 'react-router-dom';
 import SignupForm from './signup-form';
 import './signup-page.css';
 
+/**
+ * The SignupPage component handles an automatic login for an
+ * authorized user and renders the SignUp form if there is no 
+ * current user. 
+ */
 export function SignupPage(props) {
-  // If we are logged in (which happens automatically when Signup
-  // is successful) redirect to the user's dashboard
   if (props.loggedIn) {
     return <Redirect to="/dashboard" />;
   }

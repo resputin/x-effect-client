@@ -1,13 +1,15 @@
-export const normalizeResponseErrors = res => { 
+/**
+ * Taken from Joe, a way to turn errors into something that can
+ * be displayed nicely in redux-form
+ */
+export const normalizeResponseErrors = res => {
   if (!res.ok) {
     if (
       res.headers.has('content-type') &&
       res.headers.get('content-type').startsWith('application/json')
     ) {
-      // It's a nice JSON error returned by us, so decode it
       return res.json().then(err => Promise.reject(err));
     }
-    // It's a less informative error returned by express
     return Promise.reject({
       code: res.status,
       message: res.statusText

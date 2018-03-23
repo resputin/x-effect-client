@@ -13,6 +13,12 @@ const initialState = {
   newCard: false
 };
 
+/**
+ * The card reducer handles fetched cards from the database and will clear out cards from the state
+ *
+ * @param {Object} state The card state to be modified
+ * @param {Object} action An Object to specifiy what the reducer should do and the payload to change
+ */
 export default function reducer(state = initialState, action) {
   if (action.type === FETCH_CARDS_REQUEST) {
     return Object.assign({}, state, { loading: true });
@@ -21,7 +27,7 @@ export default function reducer(state = initialState, action) {
       const cardObj = {};
       action.cards.forEach(card => {
         cardObj[card.id] = card;
-      })
+      });
       return Object.assign({}, state, {
         cards: cardObj,
         loading: false
@@ -35,7 +41,7 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === CHECK_CARD_REQUEST) {
     return Object.assign({}, state, { loading: true });
   } else if (action.type === CLEAR_CARDS) {
-    return Object.assign({}, state, initialState)
+    return Object.assign({}, state, initialState);
   }
   return state;
 }

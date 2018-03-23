@@ -3,18 +3,24 @@ import {
   CLEAR_AUTH,
   AUTH_REQUEST,
   AUTH_SUCCESS,
-  AUTH_ERROR,
-  INACTIVE
+  AUTH_ERROR
 } from '../actions/auth';
 
 const initialState = {
-  authToken: null, // authToken !== null does not mean it has been validated
+  authToken: null,
   currentUser: null,
   loading: false,
-  error: null,
-  inactive: false
+  error: null
 };
 
+/**
+ * The auth reducer will handle setting the log in and log out actions.
+ * This reducer is only in charge of handling the JWT and current user parameters.
+ *
+ * @param {Object} state The auth state to be modified
+ * @param {Object} action An Object to specifiy what the reducer should do and the payload to change
+ *
+ */
 export default function reducer(state = initialState, action) {
   if (action.type === SET_AUTH_TOKEN) {
     return Object.assign({}, state, {
@@ -23,8 +29,7 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === CLEAR_AUTH) {
     return Object.assign({}, state, {
       authToken: null,
-      currentUser: null,
-      inactive: false
+      currentUser: null
     });
   } else if (action.type === AUTH_REQUEST) {
     return Object.assign({}, state, {
@@ -40,10 +45,6 @@ export default function reducer(state = initialState, action) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error
-    });
-  } else if (action.type === INACTIVE) {
-    return Object.assign({}, state, {
-      inactive: action.inactive
     });
   }
   return state;

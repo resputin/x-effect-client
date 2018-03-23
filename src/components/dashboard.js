@@ -7,8 +7,16 @@ import Navigation from './navigation';
 import requiresLogin from './requires-login';
 import './dashboard.css';
 
+/**
+ * Dashboard is the main page of the app. It renders all of the users
+ * cards along with the nav pane and a form to add additional cards.
+ * The main logic here handles rendering each card in its own section
+ * so that it can be hash linked from the nav pane. The cards it receives
+ * as props from Redux are fetched from the database which is called after
+ * a successful log in. This component is also wrapped in the RequiresLogin
+ * component.
+ */
 export class Dashboard extends Component {
-
   render() {
     const cards = [];
     for (let key in this.props.cards) {
@@ -20,21 +28,24 @@ export class Dashboard extends Component {
       );
     }
 
-    return <div className="dashboard">
+    return (
+      <div className="dashboard">
         <Navigation className="nav" role="navigation" />
         <div className="main">
           <div className="newCard" role="form">
-            {/*  */}
-            <CardForm onSubmit={value => {
-              const submission = {};
-              submission.created = Date();
-              submission.name = value.title;
-              this.props.dispatch(addCard(submission))
-            }} />
+            <CardForm
+              onSubmit={value => {
+                const submission = {};
+                submission.created = Date();
+                submission.name = value.title;
+                this.props.dispatch(addCard(submission));
+              }}
+            />
           </div>
           <div role="main">{cards}</div>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 
@@ -48,5 +59,3 @@ const mapStateToProps = state => {
 };
 
 export default requiresLogin()(connect(mapStateToProps)(Dashboard));
-
-
