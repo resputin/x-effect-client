@@ -1,6 +1,6 @@
 # The X Effect
 
-See the project for yourself [The X Effect](https://nielsendb.com)
+See the project running at [The X Effect](https://nielsendb.com)
 
 ## What is the X Effect?
 The X Effect is a habit tracking movement inspired by a reddit post by someone who was looking for a way to make one habit stick. The main idea of the X Effect is that if you can do something for 49 consecutive days than you will be able to say that you've ingrained this habit for life. The way that the X Effect implements this idea is straightforward:
@@ -41,3 +41,17 @@ This application takes a lot of the logistical work away and lets you focus on t
   * TravisCI
   * Digital Ocean
   * Nginx
+  * Mobile First Development
+  * Fully Accessible
+
+## Building
+
+This is the front end repo only, to get the entire application working you need to also clone the api repo at [https://github.com/resputin/x-effect-server](https://github.com/resputin/x-effect-server). This application requires mongo to be installed locally and running with a `mongod` instance in your shell.
+
+After both repos have been cloned and `mongod` is running
+
+1. CD into both directories in your terminal and `npm install` both.
+2. Create .env files in the root level of both directories.
+  * The client .env needs `REACT_APP_API_BASE_URL='http://localhost:8080/api'` or wherever you expect to run your server from but with `/api` appended to the end
+  * The server .env needs a `JWT_SECRET` and a Twilio user key and token saved as `TWILIO_SID` and `TWILIO_TOKEN`
+3. run `npm start` on both terminal instances
