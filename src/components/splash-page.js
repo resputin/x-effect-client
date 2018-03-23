@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import LoginForm from './login-form';
 import './splashpage.css';
-
+import addCard from '../images/Add Card Flow.gif';
+import addNotification from '../images/Notification Flow.gif';
 /**
  * The SplashPAge component renders the home page with copy about the inpsiration for
  * the app and renders the LoginForm component.
@@ -54,13 +55,39 @@ export function SplashPage(props) {
         </ol>
         <p>
           This application takes a lot of the logistical work away and lets you
-          focus on the thing that matters, completing your card. In addition
+          focus on the thing that matters, completing your card. In addition,
           this application allows for some extra features that don't exist when
-          you are doing this physically. You can set up text reminders if you
-          haven't completed a card for that day, and the application will
-          automatically mark things off if they are incomplete at the end of
-          each day. Register for an account to get started.
+          you are doing this method physically. You can set up SMS reminders to
+          remind you if you haven't completed a card for that day, and the
+          application will automatically mark things off as incomplete at the
+          end of each day. Register for an account to get started.
         </p>
+        <h4>How to add a Card</h4>
+        <p>
+          Adding a card is easy! Just fill out the name of the card and hit
+          'Add'. The card will create and you will have the first square
+          available to be checked off. Click that square to mark it off with an
+          X. If you miss that day it will automatically be filled in with an O
+          at midnight.
+        </p>
+        <img
+          src={addCard}
+          alt="A gif demonstrating how to add a card"
+          className="gif"
+        />
+        <h4>How to add a Notification</h4>
+        <p>
+          Adding a notification is straightforward as well. Open the
+          notifications panel and fill out the form with your desired settings.
+          Click 'Turn on Notifications' and you will receive a text at the time
+          you selected with your message if you haven't completed your goal for
+          the day.
+        </p>
+        <img
+          src={addNotification}
+          alt="A gif demonstrating how to add a notification"
+          className="gif"
+        />
       </div>
     </div>
   );
