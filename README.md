@@ -1,6 +1,6 @@
 # The X Effect
 
-See the project running at [The X Effect](https://nielsendb.com)
+See the project running at [The X Effect](https://xeffect.nielsendb.com)
 
 ## What is the X Effect?
 The X Effect is a habit tracking movement inspired by a reddit post by someone who was looking for a way to make one habit stick. The main idea of the X Effect is that if you can do something for 49 consecutive days than you will be able to say that you've ingrained this habit for life. The way that the X Effect implements this idea is straightforward:
